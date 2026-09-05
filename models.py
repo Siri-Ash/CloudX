@@ -135,3 +135,35 @@ class File(Base):
         nullable=False,
         server_default=func.now()
     )
+
+class ShareLink(Base):
+    __tablename__ = "share_links"
+
+    share_id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=func.gen_random_uuid()
+    )
+
+    bucket_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("buckets.bucket_id", ondelete="CASCADE"),
+        nullable=False
+    )
+
+    token = Column(
+        String(255),
+        nullable=False,
+        unique=True
+    )
+
+    expires_at = Column(
+        DateTime(timezone=True),
+        nullable=True
+    )
+
+    created_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now()
+    )

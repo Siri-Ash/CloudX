@@ -21,12 +21,3 @@ def decrypt_data(data: bytes) -> bytes:
     # Decrypt the encrypted bytes
     return fernet.decrypt(data)
 
-if __name__ == "__main__":
-    original = b"Hello World"
-
-    encrypted = encrypt_data(original)
-    decrypted = decrypt_data(encrypted)
-
-    print("Original :", original)
-    print("Encrypted:", encrypted)
-    print("Decrypted:", decrypted)

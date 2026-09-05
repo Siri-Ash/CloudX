@@ -31,9 +31,3 @@ def get_db():
     finally:
         db.close()
 
-try:
-    with engine.connect() as connection:
-        print("connected to CloudX")
-except Exception as e:
-    print("failed to connect")
-    print(e)
